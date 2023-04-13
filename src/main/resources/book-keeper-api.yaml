@@ -1,7 +1,7 @@
 openapi: "3.0.0"
 info:
   version: 1.0.0
-  title:
+  title: Keep all your accounts payable organized!
   license:
     name: MIT
 paths:
