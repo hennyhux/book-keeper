@@ -1,4 +1,4 @@
-package com.example.bookkeeper.controller;
+package com.genie.bookkeeper.controller;
 
 import com.keeper.openapi.api.PingApi;
 import org.springframework.http.HttpStatus;

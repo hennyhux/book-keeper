@@ -1,4 +1,4 @@
-package com.example.bookkeeper.scribe;
+package com.genie.bookkeeper.scribe;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
