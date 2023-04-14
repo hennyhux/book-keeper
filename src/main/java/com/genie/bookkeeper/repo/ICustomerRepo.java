@@ -11,6 +11,4 @@ public interface ICustomerRepo extends JpaRepository<Customer, Integer> {
 
     List<Customer> findAll();
 
-    Customer findCustomerByCustomerName(String customerName);
-
 }

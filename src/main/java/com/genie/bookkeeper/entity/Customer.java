@@ -1,10 +1,8 @@
 package com.genie.bookkeeper.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Data
@@ -12,11 +10,19 @@ import lombok.*;
 @NoArgsConstructor
 @Table(name = "customer")
 public class Customer {
+
     @Id
-    @Column(name = "customerID")
+    @GeneratedValue(generator="system-uuid")
+    @GenericGenerator(name="system-uuid", strategy = "uuid")
+    @Column(name = "customer_id")
     private String id;
 
-    @Column(name = "customerName")
-    private String customerName;
+    @Column(name = "customer_firstName")
+    private String customerFirstName;
 
+    @Column(name = "customer_lastName")
+    private String customerLastName;
+
+    @Column(name = "phoneNumber")
+    private String phoneNumber;
 }
