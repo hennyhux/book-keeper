@@ -3,14 +3,24 @@ info:
   version: 1.0.0
   title: Keep all your accounts payable organized!
   license:
-    name: MIT
+    name: New Generation
 paths:
-  /pets:
+  /ping:
     get:
-      summary: List all pets
-      operationId: listPets
+      summary: Provides information about the health of a web service
+      operationId: ping
+      responses:
+        200:
+          description: Healthy service
+        500:
+          description: Unhealthy service
+
+  /customers:
+    get:
+      summary: List all customers
+      operationId: listCustomers
       tags:
-        - pets
+        - customers
       parameters:
         - name: limit
           in: query
@@ -21,7 +31,7 @@ paths:
             format: int32
       responses:
         200:
-          description: An paged array of pets
+          description: An paged array of customers
           headers:
             x-next:
               description: A link to the next page of responses
@@ -30,7 +40,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Pets"
+                $ref: "#/components/schemas/Customers"
         default:
           description: unexpected error
           content:
@@ -38,30 +48,31 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
     post:
-      summary: Create a pet
-      operationId: createPets
+      summary: Create a customer
+      operationId: createCustomer
       tags:
-        - pets
+        - customers
       responses:
         201:
-          description: Null response
+          description: Created customer
         default:
           description: unexpected error
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-  /pets/{petId}:
+
+  /customers/{customerID}:
     get:
-      summary: Info for a specific pet
-      operationId: showPetById
+      summary: Info for a specific customer
+      operationId: showCustomerById
       tags:
-        - pets
+        - customers
       parameters:
-        - name: petId
+        - name: customerID
           in: path
           required: true
-          description: The id of the pet to retrieve
+          description: The id of the customer to retrieve
           schema:
             type: string
       responses:
@@ -70,7 +81,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Pets"
+                $ref: "#/components/schemas/Customers"
         default:
           description: unexpected error
           content:
@@ -79,7 +90,7 @@ paths:
                 $ref: "#/components/schemas/Error"
 components:
   schemas:
-    Pet:
+    Customer:
       required:
         - id
         - name
@@ -91,10 +102,10 @@ components:
           type: string
         tag:
           type: string
-    Pets:
+    Customers:
       type: array
       items:
-        $ref: "#/components/schemas/Pet"
+        $ref: "#/components/schemas/Customer"
     Error:
       required:
         - code
