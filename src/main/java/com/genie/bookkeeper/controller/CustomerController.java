@@ -40,7 +40,6 @@ public class CustomerController implements CustomersApi {
         customerRepo.saveAndFlush(customerEntity);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-
     @GetMapping("/customersList")
     public List<com.genie.bookkeeper.entity.Customer> getAllCustomers(){
         return customerRepo.findAll();
@@ -51,7 +50,6 @@ public class CustomerController implements CustomersApi {
         scribe.logEntry(this.getClass(), "List pets endpoint invoked in controller", ActivityScribeLoggingLevels.INFO);
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
-
     @Override
     public ResponseEntity<List<com.keeper.openapi.model.Customer>> showCustomerById(String customerId){
         scribe.logEntry(this.getClass(), "Show pets endpoint invoked in controller", ActivityScribeLoggingLevels.INFO);
